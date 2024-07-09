@@ -1,0 +1,71 @@
+<h2 class="mb-5 ">
+    @if (contact) {
+        Editar 
+   } @else {
+    Nuevo 
+   }contacto
+</h2>
+
+
+
+<div class="row row-cols-3 justify-content-center">
+    @if (form) {
+        <form [formGroup]="form" (ngSubmit)="save()">
+            <div class="mb-3">
+                <label for="nombre">Nombre</label>
+                <input id="nombre" type="text" placeholder="escriba el nombre del cliente" class="form-control"
+                    formControlName="nombre">
+
+               @if (form.get('nombre')?.hasError('required') && form.get('nombre')?.touched) {
+                <p class="invaid-feedback d-block" class="text-danger">El nombre es obligatorio</p>
+               }
+            </div>
+        
+            <div class="mb-3">
+                <label for="telefono">Telefono</label>
+                <input id="telefono" type="number" placeholder="Escriba el telefono del cliente" class="form-control"
+                formControlName="telefono">
+                @if (form.get('telefono')?.hasError('required') && form.get('telefono')?.touched) {
+                    <p class="invaid-feedback d-block" class="text-danger">El telefono es obligatorio</p>
+                   }
+            </div>
+        
+            <div class="mb-3">
+                <label for="direccion">Direccion</label>
+                <input id="direccion" type="text" placeholder="Escriba la direccion del cliente" class="form-control"
+                formControlName="direccion">
+
+                @if (form.get('direccion')?.hasError('required') && form.get('direccion')?.touched) {
+                    <p class="invaid-feedback d-block" class="text-danger">La dereccion es obligatoria</p>
+                   }
+            </div>
+        
+            <div class="mb-3">
+                <label for="correo">Correo</label>
+                <input id="correo" type="email" placeholder="Escriba el correo del cliente" class="form-control"
+                formControlName="correo" >
+
+                @if (form.get('correo')?.hasError('required') && form.get('correo')?.touched) {
+                    <p class="invaid-feedback d-block" class="text-danger">El correo es obligatorio</p>
+                   }
+                @if (form.get('correo')?.hasError('email') && form.get('correo')?.touched) {
+                    <p class="invaid-feedback d-block" class="text-danger">El correo es invalido</p>
+                   }
+            </div>
+            
+            <div class="text-end">
+                <button type="button" class="btn btn-light" routerLink="/">
+                    Cancelar
+                </button>
+                <button class="btn btn-primary ms-2">
+                    @if (contact) {
+                        Actualizar
+                   } @else {
+                    Crear
+                   }contacto
+                </button>
+            </div>
+        </form>
+    }
+    
+</div>
