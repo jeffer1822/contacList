@@ -1,10 +1,7 @@
 package com.jeffer.contactlistapi.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
@@ -12,7 +9,8 @@ import java.time.LocalDateTime;
 @Data
 @RequiredArgsConstructor
 @NoArgsConstructor
-
+@AllArgsConstructor
+@Builder
 
 public class Contact {
     @Id
@@ -31,7 +29,7 @@ public class Contact {
     @NonNull
     private String direccion;
 
-    @NonNull
+
     private LocalDateTime fechaRegistro;
 
 }
